@@ -58,4 +58,28 @@ public class EmployeeController {
         return map;
     }
 
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/loginEmployee",consumes = "application/json",produces = "application/json")
+    public HashMap<String,String> Loginemployee(@RequestBody Employee e){
+        List<Employee> result = (List<Employee>) dao.Loginemployee(e.getUsername(),e.getPassword());
+        HashMap<String,String> map = new HashMap<>();
+        if(result.size()==0){
+            map.put("status","failed");
+            map.put("message","user not existing");
+        }
+        else{
+            map.put("status","success");
+            map.put("userId",String.valueOf(result.get(0).getId()));
+
+        }
+        return map;
+    }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(path = "/viewProfile",consumes = "application/json",produces = "application/json")
+    public List<Employee> Viewprofile(@RequestBody Employee e){
+        return (List<Employee>) dao.Viewprofile(e.getId());
+    }
+
+
 }

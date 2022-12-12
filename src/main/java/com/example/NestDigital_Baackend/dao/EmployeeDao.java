@@ -11,6 +11,9 @@ import java.util.List;
 
 public interface EmployeeDao extends CrudRepository<Employee,Integer> {
 
+    @Query(value = "SELECT `id`, `designation`, `email`, `empcode`, `name`, `password`, `phone`, `salary`, `username` FROM `employee` WHERE `username` = :username AND `password` = :password",nativeQuery = true)
+    List<Employee> Loginemployee (@Param("username") String username, @Param("password") String password);
+
     @Query(value = "SELECT `id`, `designation`, `email`, `empcode`, `name`, `password`, `phone`, `salary`, `username` FROM `employee` WHERE `empcode`= :empcode",nativeQuery = true)
     List<Employee> Searchemployee (@Param("empcode") Integer empcode);
 
@@ -19,4 +22,8 @@ public interface EmployeeDao extends CrudRepository<Employee,Integer> {
 
     @Query(value = "DELETE FROM `employee` WHERE `id` = :id",nativeQuery = true)
     void Deleteemployee(@Param("id") Integer id);
+
+    @Query(value = "SELECT `id`, `designation`, `email`, `empcode`, `name`, `password`, `phone`, `salary`, `username` FROM `employee` WHERE `id` = :id",nativeQuery = true)
+    List<Employee> Viewprofile(@Param("id") Integer id);
+
 }
