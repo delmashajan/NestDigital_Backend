@@ -24,6 +24,6 @@ public interface EmployeeDao extends CrudRepository<Employee,Integer> {
     void Deleteemployee(@Param("id") Integer id);
 
     @Query(value = "SELECT `id`, `designation`, `email`, `empcode`, `name`, `password`, `phone`, `salary`, `username` FROM `employee` WHERE `id` = :id",nativeQuery = true)
-    List<Employee> Viewprofile(@Param("id") Integer id);
+    List<Employee> Viewprofile (@Param("id") Integer id);
 
 }
