@@ -61,7 +61,7 @@ public class SecurityController {
     @CrossOrigin(origins = "*")
     @PostMapping(path = "/loginSec",consumes = "application/json",produces = "application/json")
     public HashMap<String,String> Loginsecurity(@RequestBody Security s){
-        List<Security> result = (List<Security>) dao.Loginemployee(s.getUsername(),s.getPassword());
+        List<Security> result = (List<Security>) dao.Loginsecurity(s.getUsername(),s.getPassword());
         HashMap<String,String> map = new HashMap<>();
         if(result.size()==0){
             map.put("status","failed");
