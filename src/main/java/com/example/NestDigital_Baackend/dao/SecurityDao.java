@@ -12,7 +12,7 @@ import java.util.List;
 public interface SecurityDao extends CrudRepository<Security,Integer> {
 
     @Query(value = "SELECT `id`, `email`, `name`, `password`, `phone`, `salary`, `seccode`, `username` FROM `secuirities` WHERE `username` = :username AND `password` = :password",nativeQuery = true)
-    List<Security> Loginemployee (@Param("username") String username,@Param("password") String password);
+    List<Security> Loginsecurity (@Param("username") String username,@Param("password") String password);
 
     @Query(value = "SELECT `id`, `email`, `name`, `password`, `phone`, `salary`, `seccode`, `username` FROM `secuirities` WHERE `seccode` = :seccode",nativeQuery = true)
     List<Security> Searchsecurity(@Param("seccode") Integer seccode);
